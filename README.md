@@ -1,6 +1,8 @@
 # Digital Tribes - Ad-Hoc Mesh Network
 Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challenge / Hackathon. This is achieved by implementing HSMM-Pi
 
+<p align="center"><img width=80%% src="https://github.com/amroczeK/tribes-mesh-network/blob/master/images/HSMM.PNG"></p>
+
 ## Hardware Requirements
 
 1. 1x Raspberry Pi 1 B+ V1.2 (acting as Gateway Node)
