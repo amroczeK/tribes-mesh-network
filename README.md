@@ -1,5 +1,5 @@
 # Digital Tribes - Ad-Hoc Mesh Network
-Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challenge / Hackathon. This is achieved by implementing HSMM-Pi
+Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challenge / Hackathon and is achieved by implementing [HSMM-Pi](https://github.com/urlgrey/hsmm-pi/blob/master/README.md).
 
 <p align="center"><img width=100%% src="https://github.com/amroczeK/tribes-mesh-network/blob/master/images/HSMM.PNG"></p>
 
@@ -20,3 +20,8 @@ Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challen
 4. PuTTy to SSH into the Raspberry Pi's
 
 ## Initial Setup
+
+
+## References
+
+1. https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=62371
