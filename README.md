@@ -23,7 +23,7 @@ Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challen
 
 ## Syncing Files between Raspberry Pi's
 
-"rsync -azP ~/rsync/src/ pi@10.201.5.1:~/rsync/dest"
+rsync -azP ~//rsync//src// pi@10.201.5.1:~//rsync//dest
 
 ## References
 
