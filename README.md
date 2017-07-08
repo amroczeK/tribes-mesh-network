@@ -44,8 +44,8 @@ network={
 }
 
 sudo service networking restart
-
 ```
+
 2. Run the following commands to download the HSMM-Pi project and install
 ```
 sudo apt-get update
