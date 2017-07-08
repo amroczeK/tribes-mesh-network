@@ -25,6 +25,8 @@ Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challen
 
 rsync -azP ~/rsync/src/ pi@10.201.5.1:~/rsync/dest
 
+Note: Ignore the strike through the code, this is caused by "~".
+
 ## References
 
 1. https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=62371
