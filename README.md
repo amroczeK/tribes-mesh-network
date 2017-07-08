@@ -20,8 +20,33 @@ Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challen
 4. PuTTy to SSH into the Raspberry Pi's
 
 ## Initial Setup
+1. Setup Raspberry Pi to connect to WiFi & internet
+```
+sudo nano /etc/network/interfaces
 
-1. Run the following commands to download the HSMM-Pi project and install
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet static
+    address 192.168.1.106 # IP for the Zero
+    netmask 255.255.255.0
+    gateway 192.168.1.1 # Your router IP
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+
+network={
+  ssid="myssid"
+  psk="mypassword"
+  proto=WPA2
+  key_mgmt=WPA-PSK
+  pairwise=CCMP
+  auth_alg=OPEN
+}
+
+sudo service networking restart
+
+```
+2. Run the following commands to download the HSMM-Pi project and install
 ```
 sudo apt-get update
 sudo apt-get install -y git
