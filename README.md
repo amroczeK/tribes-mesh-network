@@ -80,7 +80,7 @@ DNS 1: 8.8.8.8
 DNS 2: 8.8.4.4
 Tick box: WAN port is always on (periodic testing of Internet connectivity is unnecessary)
 
-### Mesh (Leave this default as below)
+### Mesh
 Node Name: RPi-GW-01
 Tick box: OLSRD Secure
 OLSRD Secure Key: FFFFFFFFFFFFFFFF
@@ -88,8 +88,29 @@ OLSRD Secure Key: FFFFFFFFFFFFFFFF
 ### Time (Leave this default as below)
 Network Time Server: ntp.ubuntu.com
 ```
+**NOTE: Restart the device using the prompt on the web interface to apply the changes.**
 
-5. 
+5. Configure the Network settings for the Gateway Nodes within the HSMM-Pi web interface
+```
+### Network Settings
+#### WiFi
+Adapter Name: wlan0
+IP Address: 10.201.5.2
+Netmask: 255.0.0.0
+SSID: HSMM-MESH
+Channel: 1
+
+### Wired (Leave this as default)
+
+### Mesh
+Node Name: RPi-NODE-01
+Tick box: OLSRD Secure
+OLSRD Secure Key: FFFFFFFFFFFFFFFF
+
+### Time (Leave this default as below)
+Network Time Server: ntp.ubuntu.com
+```
+**NOTE: Restart the device using the prompt on the web interface to apply the changes.**
 
 ## Syncing Files between Raspberry Pi's
 ```bash
