@@ -55,6 +55,41 @@ cd hsmm-pi
 sh install.sh
 ```
 
+3. Login to the web application on through a browser on: http://(wired Ethernet IP of the node):8080/
+```
+Initial login details:
+Username: admin
+Password: changeme
+```
+
+4. Configure the Network settings for the Gateway Node within the HSMM-Pi web interface
+```
+### Network Settings
+#### WiFi
+Adapter Name: wlan0
+IP Address: 10.201.5.1
+Netmask: 255.0.0.0
+SSID: HSMM-MESH
+Channel: 1
+
+### Wired
+Adapter Name: eth0
+Wires interface mode: WAN
+Protocol: DHCP
+DNS 1: 8.8.8.8
+DNS 2: 8.8.4.4
+Tick box: WAN port is always on (periodic testing of Internet connectivity is unnecessary)
+
+### Mesh (Leave this default as below)
+Node Name: RPi-GW-01
+Tick box: OLSRD Secure
+OLSRD Secure Key: FFFFFFFFFFFFFFFF
+
+### Time (Leave this default as below)
+Network Time Server: ntp.ubuntu.com
+```
+
+5. 
 
 ## Syncing Files between Raspberry Pi's
 ```bash
