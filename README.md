@@ -88,7 +88,7 @@ OLSRD Secure Key: FFFFFFFFFFFFFFFF
 ### Time (Leave this default as below)
 Network Time Server: ntp.ubuntu.com
 ```
-**NOTE: Restart the device using the prompt on the web interface to apply the changes.**
+**NOTE: Restart the device using the prompt on the web interface to apply the changes. Also the eth0 interface will be leased an IP address by the router it's connected to using DHCP. To find the assigned IP address, simply use a network scanning tool like Advanced IP Scanner, as pinging the hostname (RPi-GW-01) might not resolve.**
 
 5. Configure the Network settings for the Gateway Nodes within the HSMM-Pi web interface
 ```
