@@ -21,10 +21,20 @@ Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challen
 
 ## Initial Setup
 
+1. Run the following commands to download the HSMM-Pi project and install
+```
+sudo apt-get update
+sudo apt-get install -y git
+git clone https://github.com/urlgrey/hsmm-pi.git
+cd hsmm-pi
+sh install.sh
+```
+
+
 ## Syncing Files between Raspberry Pi's
-
+```bash
 rsync -azP ~/rsync/src/ pi@10.201.5.1:~/rsync/dest
-
+```
 Note: Ignore the strike through the code, this is caused by "~".
 
 ## References
