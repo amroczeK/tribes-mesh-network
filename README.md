@@ -4,4 +4,5 @@ Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challen
 ### Challenge 2: 
 Can you design a prototype which operates in an ad hoc network suited for distributed safety devices?
 
-## [HSMM-Pi Implementation](https://github.com/amroczeK/tribes-mesh-network/blob/master/hsmm-pi.md)
+### [B.A.T.M.A.N-ADV Implementation](https://github.com/amroczeK/tribes-mesh-network/blob/master/b.a.t.m.a.n-adv.md)
+### [HSMM-Pi Implementation](https://github.com/amroczeK/tribes-mesh-network/blob/master/hsmm-pi.md)
