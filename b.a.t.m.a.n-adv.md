@@ -20,7 +20,7 @@ This is the most suitable routing protocol for a mesh network, and was chosen as
 4. PuTTy to SSH into the Raspberry Pi's
 
 ## Initial Setup
-1. Setup Raspberry Pi to connect to WiFi & internet
+1. Setup Raspberry Pi to connect to WiFi & internet.
 ```
 # Edit the interfaces
 sudo nano /etc/network/interfaces
@@ -46,7 +46,7 @@ network={
 sudo service networking restart
 ```
 
-2. Test internet connectivity
+2. Test internet connectivity.
 ```
 # Check if you have been leased an IP address
 sudo ifconfig wlan0
@@ -61,7 +61,7 @@ sudo reboot
 ping 8.8.8.8
 ```
 
-3. Update and Upgrade Raspberry Pi before installations
+3. Update and Upgrade Raspberry Pi before installations.
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -77,14 +77,14 @@ cd batctl
 sudo make install
 ```
 
-5. Configure batman-adv to start automatically on boot up
+5. Configure batman-adv to start automatically on boot up.
 
-Edit /etc/modules
+Edit /etc/modules.
 ```
 sudo nano /etc/modules
 ```
 
-Add "batman-adv" onto a new line in the /etc/modules file
+Add "batman-adv" onto a new line in the /etc/modules file.
 ```
 # /etc/modules: kernel modules to load at boot time.
 #
@@ -92,4 +92,95 @@ Add "batman-adv" onto a new line in the /etc/modules file
 # at boot time, one per line. Lines begining with '#' are ignored.
 
 batman-adv
+```
+
+5. Disconnect from your WiFi network by returning the /etc/network/interfaces/ and /etc/wpa_supplicant/wpa_supplicant.conf files to default or commenting out the changes.
+
+6. Create a file in /home/pi that will be used to run as a script and configure the mesh network on boot-up.
+```
+sudo nano batsetup-rpi.sh
+```
+Add the following lines to the script file.
+```
+#! /bin/sh
+
+# Activate batman-adv
+sudo modprobe batman-adv
+
+# Disable and configure wlan0
+sudo ip link set wlan0 down
+sudo ifconfig wlan0 mtu 1532
+sudo iwconfig wlan0 mode ad-hoc
+sudo iwconfig wlan0 essid KLOG-AD-HOC # Change this to whatever you like
+sudo iwconfig wlan0 ap 02:12:34:56:78:9A
+sudo iwconfig wlan0 channel 1
+sleep 1s
+sudo ip link set wlan0 up
+
+#iwconfig wlan0 essid KLOG-AD-HOC # Uncomment this if you are using a Rasp Pi 1 and have issues with essid not being created
+
+sleep 1s
+sudo batctl if add wlan0
+sleep 1s
+sudo ifconfig bat0 up
+sleep 5s
+
+# Use different IPv4 addresses for each device
+sudo ifconfig bat0 172.27.0.1/16
+```
+
+7. Give execute privileges to the script.
+```
+sudo sh batsetup-rpi.sh
+```
+
+8. Configure /etc/rc.local to run the script on startup.
+```
+sudo nano /etc/rc.local
+```
+Comment out the contents and add "/home/pi/batsetup-rpi.sh &" to the last line.
+```
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+# Print the IP address
+#_IP=$(hostname -I) || true
+#if [ "$_IP" ]; then
+#  printf "My IP address is %s\n" "$_IP"
+#fi
+
+#exit 0
+
+/home/pi/batsetup-rpi.sh &
+```
+Save changes and exit.
+
+9. Reboot the Raspberry Pi.
+```
+sudo reboot
+```
+
+Now B.A.T.M.A.N Advanced and all it's dependencies should be installed and running after the reboot. Either manually repeat the procedure for every node, or clone the microSD as an image and flash it to the other nodes microSD. Make sure to configure the network address of the bat0 interface for every node.
+
+NOTE: If devices don't ping immediately don't panic, give them some time to broadcast their presence to the other nodes.
+
+## Test mesh network connectivity
+```
+sudo ifconfig bat0
+sudo ifconfig wlan0
+sudo iwconfig
+
+sudo batctl o
+sudo batctl ping 
+sudo traceroute 172.27.0.2
 ```
