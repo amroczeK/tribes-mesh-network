@@ -1,5 +1,5 @@
 # Digital Tribes - Ad-Hoc Mesh Network
-Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challenge / Hackathon and is achieved by implementing [HSMM-Pi](https://github.com/urlgrey/hsmm-pi/blob/master/README.md).
+Ad-Hoc Mesh Network using Raspberry Pi's for the Digital Tribes Hardware Challenge / Hackathon and is achieved by implementing [HSMM-Pi](https://github.com/urlgrey/hsmm-pi/blob/master/README.md). HSMM-Pi is a set of tools designed to easily configure the Raspberry Pi to function as a High-Speed Multimedia (HSMM) wireless mesh node.
 
 <p align="center"><img width=100%% src="https://github.com/amroczeK/tribes-mesh-network/blob/master/images/HSMM.PNG"></p>
 
@@ -121,3 +121,4 @@ Note: Ignore the strike through the code, this is caused by "~".
 ## References
 
 1. https://www.raspberrypi.org/forums/viewtopic.php?f=28&t=62371
+2. https://github.com/urlgrey/hsmm-pi
