@@ -77,23 +77,6 @@ cd batctl
 sudo make install
 ```
 
-5. Configure batman-adv to start automatically on boot up.
-
-Edit /etc/modules.
-```
-sudo nano /etc/modules
-```
-
-Add "batman-adv" onto a new line in the /etc/modules file.
-```
-# /etc/modules: kernel modules to load at boot time.
-#
-# This file contains the names of kernel modules that should be loaded
-# at boot time, one per line. Lines begining with '#' are ignored.
-
-batman-adv
-```
-
 5. Disconnect from your WiFi network by returning the /etc/network/interfaces/ and /etc/wpa_supplicant/wpa_supplicant.conf files to default or commenting out the changes.
 
 6. Create a file in /home/pi that will be used to run as a script and configure the mesh network on boot-up.
