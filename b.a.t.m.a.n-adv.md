@@ -174,5 +174,5 @@ sudo iwconfig
 
 sudo batctl o
 sudo batctl ping 
-traceroute 172.27.0.2
+sudo batctl traceroute 172.27.0.2
 ```
