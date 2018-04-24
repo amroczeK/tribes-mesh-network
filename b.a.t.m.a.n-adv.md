@@ -113,11 +113,38 @@ iwconfig ${iface} essid ${cluster_ssid}
 sleep 1s && ifconfig ${iface} up || exit_error "failed to bring up ${iface}"
 
 # configure batman interface
-ifconfig bat0 up || exit_error "failed to bring up batman interface"
 batctl if add ${iface}
+ifconfig bat0 up || exit_error "failed to bring up batman interface"
 ifconfig bat0 ${node_ip}
+```
 
-exit 0
+### Simplified version
+```
+#! /bin/sh
+
+# Activate batman-adv
+sudo modprobe batman-adv
+
+# Disable and configure wlan0
+sudo ip link set wlan0 down
+sudo ifconfig wlan0 mtu 1532
+sudo iwconfig wlan0 mode ad-hoc
+sudo iwconfig wlan0 essid KLOG-AD-HOC # Change this to whatever you like
+sudo iwconfig wlan0 ap 02:12:34:56:78:9A
+sudo iwconfig wlan0 channel 1
+sleep 1s
+sudo ip link set wlan0 up
+
+#iwconfig wlan0 essid KLOG-AD-HOC # Uncomment this if you are using a Rasp Pi 1 and have issues with essid not being created
+
+sleep 1s
+sudo batctl if add wlan0
+sleep 1s
+sudo ifconfig bat0 up
+sleep 5s
+
+# Use different IPv4 addresses for each device
+sudo ifconfig bat0 172.27.0.1/16 
 ```
 
 7. Give execute privileges to the script.
@@ -153,7 +180,8 @@ Comment out the unused script and add batsetup-rpi.sh test to the last line.
 
 #exit 0
 
-[ -x /home/pi/batsetup-rpi.sh ] && /home/pi/batsetup-rpi.sh &
+# Add the directory to your script
+/home/pi/batsetup-rpi.sh &
 ```
 Save changes and exit.
 
@@ -173,6 +201,8 @@ sudo ifconfig wlan0
 sudo iwconfig
 
 sudo batctl o
-sudo batctl ping 
+sudo batctl ping
+
+# Trace route to another device
 sudo batctl traceroute 172.27.0.2
 ```
