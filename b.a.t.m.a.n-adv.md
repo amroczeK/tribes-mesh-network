@@ -8,6 +8,7 @@ This is the most suitable routing protocol for a mesh network, and was chosen as
 1. 1x Raspberry Pi 1 B+ V1.2 (acting as Gateway Node)
 2. 4x Raspberry Pi Zero (acting as Nodes)
 3. TP-LINK WN725N 150Mbps Wireless N USB Nano Adapter (used by Raspberry Pi 1)
+* Install driver: https://static.tp-link.com/2018/201805/20180508/Installation%20Guide%20for%20Linux.pdf
 4. Data and OTG cables
 5. Minimum 4gb microSD card (install Raspbian Jesse Lite)
 6. microSD card Reader (used to flash Raspbian Jesse Lite)
